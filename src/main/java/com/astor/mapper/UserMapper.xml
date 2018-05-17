@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.astor.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.astor.model.User">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="FullName" jdbcType="VARCHAR" property="fullname" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="AccountStatus" jdbcType="INTEGER" property="accountstatus" />
+    <result column="AccountDisableDate" jdbcType="TIMESTAMP" property="accountdisabledate" />
+    <result column="IsBuildIn" jdbcType="BIT" property="isbuildin" />
+    <result column="IsVisbile" jdbcType="BIT" property="isvisbile" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="UpdateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, UserName, Password, FullName, Description, AccountStatus, AccountDisableDate, 
+    IsBuildIn, IsVisbile, CreateTime, UpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from User
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from User
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.astor.model.User">
+    insert into User (ID, UserName, Password, 
+      FullName, Description, AccountStatus, 
+      AccountDisableDate, IsBuildIn, IsVisbile, 
+      CreateTime, UpdateTime)
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{fullname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{accountstatus,jdbcType=INTEGER}, 
+      #{accountdisabledate,jdbcType=TIMESTAMP}, #{isbuildin,jdbcType=BIT}, #{isvisbile,jdbcType=BIT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.astor.model.User">
+    insert into User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="fullname != null">
+        FullName,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="accountstatus != null">
+        AccountStatus,
+      </if>
+      <if test="accountdisabledate != null">
+        AccountDisableDate,
+      </if>
+      <if test="isbuildin != null">
+        IsBuildIn,
+      </if>
+      <if test="isvisbile != null">
+        IsVisbile,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstatus != null">
+        #{accountstatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountdisabledate != null">
+        #{accountdisabledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isbuildin != null">
+        #{isbuildin,jdbcType=BIT},
+      </if>
+      <if test="isvisbile != null">
+        #{isvisbile,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.astor.model.User">
+    update User
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        FullName = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstatus != null">
+        AccountStatus = #{accountstatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountdisabledate != null">
+        AccountDisableDate = #{accountdisabledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isbuildin != null">
+        IsBuildIn = #{isbuildin,jdbcType=BIT},
+      </if>
+      <if test="isvisbile != null">
+        IsVisbile = #{isvisbile,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.astor.model.User">
+    update User
+    set UserName = #{username,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      FullName = #{fullname,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      AccountStatus = #{accountstatus,jdbcType=INTEGER},
+      AccountDisableDate = #{accountdisabledate,jdbcType=TIMESTAMP},
+      IsBuildIn = #{isbuildin,jdbcType=BIT},
+      IsVisbile = #{isvisbile,jdbcType=BIT},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.astor.model.User">
+    <id column="ID" jdbcType="CHAR" property="id" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="FullName" jdbcType="VARCHAR" property="fullname" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="AccountStatus" jdbcType="INTEGER" property="accountstatus" />
+    <result column="AccountDisableDate" jdbcType="TIMESTAMP" property="accountdisabledate" />
+    <result column="IsBuildIn" jdbcType="BIT" property="isbuildin" />
+    <result column="IsVisbile" jdbcType="BIT" property="isvisbile" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="UpdateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, UserName, Password, FullName, Description, AccountStatus, AccountDisableDate, 
+    IsBuildIn, IsVisbile, CreateTime, UpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from User
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultType="com.astor.model.User">
+  	select * from User;
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from User
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.astor.model.User">
+    insert into User (ID, UserName, Password, 
+      FullName, Description, AccountStatus, 
+      AccountDisableDate, IsBuildIn, IsVisbile, 
+      CreateTime, UpdateTime)
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{fullname,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{accountstatus,jdbcType=INTEGER}, 
+      #{accountdisabledate,jdbcType=TIMESTAMP}, #{isbuildin,jdbcType=BIT}, #{isvisbile,jdbcType=BIT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.astor.model.User">
+    insert into User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="fullname != null">
+        FullName,
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="accountstatus != null">
+        AccountStatus,
+      </if>
+      <if test="accountdisabledate != null">
+        AccountDisableDate,
+      </if>
+      <if test="isbuildin != null">
+        IsBuildIn,
+      </if>
+      <if test="isvisbile != null">
+        IsVisbile,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="updatetime != null">
+        UpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstatus != null">
+        #{accountstatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountdisabledate != null">
+        #{accountdisabledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isbuildin != null">
+        #{isbuildin,jdbcType=BIT},
+      </if>
+      <if test="isvisbile != null">
+        #{isvisbile,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.astor.model.User">
+    update User
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        FullName = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstatus != null">
+        AccountStatus = #{accountstatus,jdbcType=INTEGER},
+      </if>
+      <if test="accountdisabledate != null">
+        AccountDisableDate = #{accountdisabledate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isbuildin != null">
+        IsBuildIn = #{isbuildin,jdbcType=BIT},
+      </if>
+      <if test="isvisbile != null">
+        IsVisbile = #{isvisbile,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null">
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.astor.model.User">
+    update User
+    set UserName = #{username,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      FullName = #{fullname,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      AccountStatus = #{accountstatus,jdbcType=INTEGER},
+      AccountDisableDate = #{accountdisabledate,jdbcType=TIMESTAMP},
+      IsBuildIn = #{isbuildin,jdbcType=BIT},
+      IsVisbile = #{isvisbile,jdbcType=BIT},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
