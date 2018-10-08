@@ -7,8 +7,8 @@ public class TestMyBatisQuery extends TestMyBatisBase{
 	@Test
 	public void Query() {
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-		User resulst = userMapper.selectByPrimaryKey("1");
-		System.out.println(resulst.toString());
+		User result = userMapper.selectByPrimaryKey("1");
+		System.out.println(result.toString());
 
 		List<User> users=userMapper.selectAll();
 		for(User user:users){
