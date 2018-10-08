@@ -12,7 +12,7 @@ public class TestMyBatisQuery extends TestMyBatisBase{
 
 		List<User> users=userMapper.selectAll();
 		for(User user:users){
-			System.out.println(user.toString());
+			System.out.println(user.getId().toString());
 		}
 		sqlSession.close();
 	}
