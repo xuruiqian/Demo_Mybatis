@@ -37,13 +37,11 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.9</version>
         </dependency>
-        <!-- jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!-- mybatis generator -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
